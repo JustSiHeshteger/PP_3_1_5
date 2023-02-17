@@ -25,23 +25,23 @@ public class AdminRestController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<User> getById(@PathVariable("id") Long id) {
+    public ResponseEntity<User> getUserById(@PathVariable("id") Long id) {
         User response = userService.getById(id);
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
 
     @PostMapping()
-    public ResponseEntity<HttpStatus> newUser(@RequestBody User user) {
+    public ResponseEntity<HttpStatus> saveNewUserToDb(@RequestBody User user) {
         userService.save(user);
         return ResponseEntity.ok(HttpStatus.OK);
     }
     @PutMapping()
-    public ResponseEntity<HttpStatus> editUser(@RequestBody User user) {
+    public ResponseEntity<HttpStatus> editUserFromDb(@RequestBody User user) {
         userService.edit(user);
         return ResponseEntity.ok(HttpStatus.OK);
     }
     @DeleteMapping("/{id}")
-    public ResponseEntity<HttpStatus> deleteUser(@PathVariable("id") long id) {
+    public ResponseEntity<HttpStatus> deleteUserFromDb(@PathVariable("id") Long id) {
         userService.deleteById(id);
         return ResponseEntity.ok(HttpStatus.OK);
     }

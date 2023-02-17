@@ -22,7 +22,7 @@ public class UserRestController {
     }
 
     @GetMapping()
-    public ResponseEntity<User> getUser(Principal principal) {
+    public ResponseEntity<User> getUserPage(Principal principal) {
         User user = userService.findByEmail(principal.getName());
         return new ResponseEntity<>(user, HttpStatus.OK);
     }

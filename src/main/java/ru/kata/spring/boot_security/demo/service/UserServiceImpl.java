@@ -37,7 +37,7 @@ public class UserServiceImpl implements UserService, UserDetailsService {
     }
 
     @Override
-    public User getById(long id) {
+    public User getById(Long id) {
         Optional<User> user = userRepository.findById(id);
         if (user.isEmpty()) {
             throw new UsernameNotFoundException(String.format("User with id %s not found", id));
@@ -47,7 +47,7 @@ public class UserServiceImpl implements UserService, UserDetailsService {
     }
 
     @Override
-    public void deleteById(long id) {
+    public void deleteById(Long id) {
         userRepository.deleteById(id);
     }
 

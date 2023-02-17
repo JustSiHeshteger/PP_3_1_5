@@ -29,8 +29,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         http
                 .csrf().disable()
                 .authorizeRequests()
-                    .antMatchers("/", "/api/**")
-                    .permitAll()
+                    .antMatchers("/api/admin").hasRole("ADMIN")
                     .antMatchers("/admin/**").hasRole("ADMIN")
                     .antMatchers("/user").hasAnyRole("USER", "ADMIN")
                     .anyRequest().authenticated()
@@ -49,4 +48,5 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     public static PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder(10);
     }
+
 }

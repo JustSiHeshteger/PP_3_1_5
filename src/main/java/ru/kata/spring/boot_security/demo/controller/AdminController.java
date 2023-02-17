@@ -19,7 +19,7 @@ public class AdminController {
     }
 
     @GetMapping("/admin")
-    public String viewUsers(Principal principal, Model model) {
+    public String getAdminPage(Principal principal, Model model) {
         User user = userService.findByEmail(principal.getName());
         model.addAttribute("user", user);
         return "admin";

@@ -8,8 +8,8 @@ import java.util.List;
 public interface UserService extends UserDetailsService {
     List<User> getAllUsers();
     User findByEmail(String email);
-    User getById(long id);
-    void deleteById(long id);
+    User getById(Long id);
+    void deleteById(Long id);
     void save(User user);
     void edit(User user);
 
