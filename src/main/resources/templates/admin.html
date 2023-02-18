@@ -20,7 +20,7 @@
                         <div style="padding-left: 15px">
                             <div class="navbar-nav mr-auto mb-auto mb-lg-0">
                 <span class="navbar-brand text-center fw-bold" style="margin-right: 7px"
-                      th:utext="${user.email}">admin</span>
+                      th:utext="${user.username}">admin</span>
                                 <span class="navbar-brand">with roles:</span>
                                 <span class="navbar-brand" style="margin-left: -10px"
                                       th:each="role : ${user.roles}"
@@ -204,8 +204,8 @@
                         <input id="lastNameEdit" class="form-control" placeholder="Lastname"
                                type="text" required>
 
-                        <label for="emailEdit" class="form-label fw-bold">Username</label>
-                        <input id="emailEdit" class="form-control" placeholder="Email"
+                        <label for="usernameEdit" class="form-label fw-bold">Username</label>
+                        <input id="usernameEdit" class="form-control" placeholder="Username"
                                type="text" required>
 
                         <label for="passwordEdit"
@@ -262,8 +262,8 @@
                                class="form-control mb-3" type="text"
                                disabled>
 
-                        <label for="emailDel" class="form-label fw-bold">Username</label>
-                        <input id="emailDel"
+                        <label for="usernameDel" class="form-label fw-bold">Username</label>
+                        <input id="usernameDel"
                                class="form-control" type="text"
                                disabled>
 

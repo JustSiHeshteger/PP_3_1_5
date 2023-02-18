@@ -19,7 +19,7 @@ const showUsers = (users) => {
             <td>${user.id}</td>
             <td>${user.firstName}</td>
             <td>${user.secondName}</td>
-            <td>${user.email}</td>
+            <td>${user.username}</td>
             <td>${user.roles.map(role => role.name)}</td>
             <td class="text text-white">
                 <a class="btnEdit btn btn-info">Edit</a>
@@ -54,7 +54,7 @@ const showUser = (user) => {
             <td>${user.id}</td>
             <td>${user.firstName}</td>
             <td>${user.secondName}</td>
-            <td>${user.email}</td>
+            <td>${user.username}</td>
             <td>${user.roles.map(role => role.name)}</td>
         </tr>`
     container.innerHTML = userInfo
@@ -69,7 +69,7 @@ fetch('api/user/')
 const formNew = document.getElementById('formNewUser')
 const firstName = document.getElementById('firstName')
 const secondName = document.getElementById('secondName')
-const email = document.getElementById('username')
+const username = document.getElementById('username')
 const password = document.getElementById('password')
 const roles = document.getElementById('userRole')
 const btnNewUser = document.getElementById('btnNewUser')
@@ -78,7 +78,7 @@ const btnNewUser = document.getElementById('btnNewUser')
     console.log('btnNewUser click')
     firstName.value = ''
     secondName.value = ''
-    email.value = ''
+    username.value = ''
     password.value = ''
     roles.innerHTML = `
         <option>USER</option>
@@ -91,7 +91,7 @@ formNew.addEventListener('submit', (e) => {
     e.preventDefault()
     let listRoles = roleArray(document.getElementById('userRole'))
     console.log(
-        firstName.value, secondName.value, email.value, password.value, listRoles
+        firstName.value, secondName.value, username.value, password.value, listRoles
     )
     fetch(url, {
         method: 'POST',
@@ -101,7 +101,7 @@ formNew.addEventListener('submit', (e) => {
         body: JSON.stringify({
             firstName: firstName.value,
             secondName: secondName.value,
-            email: email.value,
+            username: username.value,
             password: password.value,
             roles: listRoles
         })
@@ -121,7 +121,7 @@ const editForm = document.getElementById('editForm')
 const idEdit = document.getElementById('idEdit')
 const nameEdit = document.getElementById('nameEdit')
 const lastnameEdit = document.getElementById('lastNameEdit')
-const emailEdit = document.getElementById('emailEdit')
+const usernameEdit = document.getElementById('usernameEdit')
 const passwordEdit = document.getElementById('passwordEdit')
 const rolesEdit = document.getElementById('userRoleEdit')
 
@@ -147,7 +147,7 @@ on(document, 'click', '.btnEdit', e => {
         idEdit.value = user.id
         nameEdit.value = user.firstName
         lastnameEdit.value = user.secondName
-        emailEdit.value = user.email
+        usernameEdit.value = user.username
         passwordEdit.value = ''
         rolesEdit.innerHTML = `
             <option value="${dbRoles[0].id}">${dbRoles[0].name}</option>
@@ -176,7 +176,7 @@ editForm.addEventListener('submit', (e) => {
             id: idForm,
             firstName: nameEdit.value,
             secondName: lastnameEdit.value,
-            email: emailEdit.value,
+            username: usernameEdit.value,
             password: passwordEdit.value,
             roles: listRoles
         })
@@ -194,7 +194,7 @@ const deleteForm = document.getElementById('modalDelete')
 const idDelete = document.getElementById('idDel')
 const nameDelete = document.getElementById('nameDel')
 const lastnameDelete = document.getElementById('lastNameDel')
-const emailDelete = document.getElementById('emailDel')
+const usernameDelete = document.getElementById('usernameDel')
 const rolesDelete = document.getElementById('userRoleDel')
 
 on(document, 'click', '.btnDelete', e => {
@@ -210,7 +210,7 @@ on(document, 'click', '.btnDelete', e => {
         idDelete.value = user.id
         nameDelete.value = user.firstName
         lastnameDelete.value = user.secondName
-        emailDelete.value = user.email
+        usernameDelete.value = user.username
         rolesDelete.innerHTML = `
             <option value="${dbRoles[0].id}">${dbRoles[0].name}</option>
             <option value="${dbRoles[1].id}">${dbRoles[1].name}</option>

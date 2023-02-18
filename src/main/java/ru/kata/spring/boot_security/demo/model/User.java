@@ -21,7 +21,7 @@ public class User implements UserDetails {
     private String secondName;
 
     @Column(unique = true)
-    private String email;
+    private String username;
 
     private String password;
 
@@ -32,19 +32,18 @@ public class User implements UserDetails {
             inverseJoinColumns = @JoinColumn(name = "role_id", referencedColumnName = "id"))
     private Set<Role> roles;
 
-    public User() {
-    }
+    public User() {}
 
-    public User(String email, String password, Set<Role> roles) {
-        this.email = email;
+    public User(String username, String password, Set<Role> roles) {
+        this.username = username;
         this.password = password;
         this.roles = roles;
     }
 
-    public User(String firstName, String secondName, String email, String password, Set<Role> roles) {
+    public User(String firstName, String secondName, String username, String password, Set<Role> roles) {
         this.firstName = firstName;
         this.secondName = secondName;
-        this.email = email;
+        this.username = username;
         this.password = password;
         this.roles = roles;
     }
@@ -73,13 +72,8 @@ public class User implements UserDetails {
         this.secondName = lastName;
     }
 
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
+    public void setUsername(String email) {
+        this.username = email;
     }
 
     @Override
@@ -89,7 +83,7 @@ public class User implements UserDetails {
 
     @Override
     public String getUsername() {
-        return email;
+        return username;
     }
 
     public void setPassword(String password) {
@@ -135,7 +129,7 @@ public class User implements UserDetails {
                 "id=" + id +
                 ", username='" + firstName + '\'' +
                 ", lastName='" + secondName + '\'' +
-                ", email='" + email + '\'' +
+                ", email='" + username + '\'' +
                 '}';
     }
 

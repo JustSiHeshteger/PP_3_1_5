@@ -20,7 +20,7 @@ public class AdminController {
 
     @GetMapping("/admin")
     public String getAdminPage(Principal principal, Model model) {
-        User user = userService.findByEmail(principal.getName());
+        User user = userService.findByUsername(principal.getName());
         model.addAttribute("user", user);
         return "admin";
     }
