@@ -59,13 +59,12 @@ const showUser = (user) => {
         </tr>`
     container.innerHTML = userInfo
 }
+
 fetch('api/user/')
     .then(response => response.json())
     .then(data => showUser(data))
     .catch(error => console.log(error))
 
-
-//Create user
 const formNew = document.getElementById('formNewUser')
 const firstName = document.getElementById('firstName')
 const secondName = document.getElementById('secondName')
@@ -188,7 +187,6 @@ editForm.addEventListener('submit', (e) => {
     modalEdit.hide()
 })
 
-//Delete modal
 const modalDelete = new bootstrap.Modal(document.getElementById('modalDelete'))
 const deleteForm = document.getElementById('modalDelete')
 const idDelete = document.getElementById('idDel')
